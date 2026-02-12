@@ -26,10 +26,10 @@ def predictHasAccount():
     data = pd.DataFrame([input_data]) 
 
     for col in data.columns:
-        if col not in ['household_size', 'age_of_respondent']:
-            data[col] = data[col].astype(str)
+        if col not in ['age_of_respondent']:
+            data[col] = data[col].astype("object")
 
-    data['year'] = data['year'].astype('object')
+    data['age_of_respondent'] = data['age_of_respondent'].astype('object')
 
     # Transform the input data using the pre-trained encoder
     data_encoded = bundle["encoder"].transform(data[bundle["columns"]])
@@ -65,4 +65,5 @@ job_type_selection = st.selectbox('Job Type', ['Dont Know/Refuse to answer', 'Fa
 if st.button('Predict'):
 
     predictHasAccount()
+
 
