@@ -25,6 +25,10 @@ def predictHasAccount():
 
     data = pd.DataFrame([input_data]) 
 
+    for col in data.columns:
+        if col not in ['household_size', 'age_of_respondent']:
+            data[col] = data[col].astype(str)
+
     data['year'] = data['year'].astype('object')
 
     # Transform the input data using the pre-trained encoder
@@ -59,4 +63,5 @@ job_type_selection = st.selectbox('Job Type', ['Dont Know/Refuse to answer', 'Fa
 
 # Prediction button
 if st.button('Predict'):
+
     predictHasAccount()
