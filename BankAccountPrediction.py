@@ -11,7 +11,7 @@ with open("FImodel.pkl", "rb") as f:
 def predictHasAccount():
     input_data = {
         "country": country_selection,
-        "year": year_selection,
+        "year": str(year_selection),
         "location_type": location_type_selection,
         "cellphone_access": cellphone_access_selection,
         "household_size": household_size_input,
@@ -65,3 +65,4 @@ job_type_selection = st.selectbox('Job Type', ['Dont Know/Refuse to answer', 'Fa
 if st.button('Predict'):
 
     predictHasAccount()
+
